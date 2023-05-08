@@ -1,18 +1,33 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
+import { StyleSheet, Text, View, FlatList } from "react-native";
+import Header from "./components/Header";
 
 export default function App() {
+
+  const [toDos, setToDos] = useState([
+    { text: "buy coffee", key: "1" },
+    { text: "create an app", key: "2" },
+    { text: "go to the gym", key: "3" },
+    { text: "play on the switch", key: "4" },
+    { text: "workout", key: "5" },
+  ]);
+
   return (
     <View style={styles.container}>
       <View>
-        <Text>hello ace1</Text>
-        <Text>hello ace1</Text>
-        <Text>hello ace1</Text>
-        <Text>hello ace1</Text>
-        <Text>hello ace1</Text>
-        <Text>hello ace1</Text>
+        <Header/>
+        <View style={styles.content}>
+          {/* list */}
+          <View style={styles.list}>
+            <FlatList 
+              data={toDos}
+              renderItem={({item})=>(
+                <Text>{item.text}</Text>
+              )}
+            />
+          </View>
+        </View>
       </View>
-      <StatusBar style="auto" />
     </View>
   );
 }
@@ -21,7 +36,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
   },
+  content :{
+    padding:40,
+  },
+  list :{
+    marginTop:20
+  }
 });
