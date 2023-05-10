@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 import Header from './components/Header';
 import TodoItem from './components/TodoItem';
+import AddToDo from './components/AddToDo';
 
 export default function App() {
     const [toDos, setToDos] = useState([
@@ -23,7 +24,7 @@ export default function App() {
             <View>
                 <Header />
                 <View style={styles.content}>
-                    {/* list */}
+                    <AddToDo/>
                     <View style={styles.list}>
                         <FlatList data={toDos} renderItem={({ item }) => <TodoItem item={item} pressHandler={pressHandler} />} />
                     </View>
