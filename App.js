@@ -19,12 +19,21 @@ export default function App() {
         });
     };
 
+    const submitHandler = (text) => {
+        setToDos((prevTodos)=>{
+            return [
+                {text:text, key:Math.random().toString()},
+                ...prevTodos
+            ]
+        })
+    };
+
     return (
         <View style={styles.container}>
             <View>
                 <Header />
                 <View style={styles.content}>
-                    <AddToDo/>
+                    <AddToDo />
                     <View style={styles.list}>
                         <FlatList data={toDos} renderItem={({ item }) => <TodoItem item={item} pressHandler={pressHandler} />} />
                     </View>
