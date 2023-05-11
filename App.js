@@ -20,12 +20,9 @@ export default function App() {
     };
 
     const submitHandler = (text) => {
-        setToDos((prevTodos)=>{
-            return [
-                {text:text, key:Math.random().toString()},
-                ...prevTodos
-            ]
-        })
+        setToDos((prevTodos) => {
+            return [{ text: text, key: Math.random().toString() }, ...prevTodos];
+        });
     };
 
     return (
@@ -33,7 +30,7 @@ export default function App() {
             <View>
                 <Header />
                 <View style={styles.content}>
-                    <AddToDo />
+                    <AddToDo submitHandler={submitHandler} />
                     <View style={styles.list}>
                         <FlatList data={toDos} renderItem={({ item }) => <TodoItem item={item} pressHandler={pressHandler} />} />
                     </View>
