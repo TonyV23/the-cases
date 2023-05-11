@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, FlatList, Alert } from 'react-native';
+import { StyleSheet, Text, View, FlatList, Alert, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import Header from './components/Header';
 import TodoItem from './components/TodoItem';
 import AddToDo from './components/AddToDo';
@@ -24,25 +24,25 @@ export default function App() {
             setToDos((prevTodos) => {
                 return [{ text: text, key: Math.random().toString() }, ...prevTodos];
             });
-        }else{
-            Alert.alert('OOh putain', 'Todos must be over 3 chars long', [{
-                
-            }])
+        } else {
+            Alert.alert('We are sorry', 'Todos must be over 3 chars long', [{}]);
         }
     };
 
     return (
-        <View style={styles.container}>
-            <View>
-                <Header />
-                <View style={styles.content}>
-                    <AddToDo submitHandler={submitHandler} />
-                    <View style={styles.list}>
-                        <FlatList data={toDos} renderItem={({ item }) => <TodoItem item={item} pressHandler={pressHandler} />} />
+        <TouchableWithoutFeedback onPress={()=>{Keyboard.dismiss()}}>
+            <View style={styles.container}>
+                <View>
+                    <Header />
+                    <View style={styles.content}>
+                        <AddToDo submitHandler={submitHandler} />
+                        <View style={styles.list}>
+                            <FlatList data={toDos} renderItem={({ item }) => <TodoItem item={item} pressHandler={pressHandler} />} />
+                        </View>
                     </View>
                 </View>
             </View>
-        </View>
+        </TouchableWithoutFeedback>
     );
 }
 
