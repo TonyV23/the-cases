@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, FlatList, Alert, TouchableWithoutFeedback, Keyb
 import Header from './components/Header';
 import TodoItem from './components/TodoItem';
 import AddToDo from './components/AddToDo';
+import Footer from './components/Footer';
 
 export default function App() {
     const [toDos, setToDos] = useState([
@@ -41,6 +42,7 @@ export default function App() {
                         </View>
                     </View>
                 </View>
+                <Footer/>
             </View>
         </TouchableWithoutFeedback>
     );
